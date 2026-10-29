@@ -6,7 +6,7 @@ E02,7519 4.1.4,"exp 10 min in the past (beyond a few minutes)",-,R,R,R,A,R,R,R(n
 E03,7519 4.1.4,"exp 30 s in the past (inside 60 s leeway)",-,A,R,A,A,A,R,R(n/c)
 E04,7519 4.1.4,"exp as a JSON string",R,R,R,R,R,R,R,R
 E05,7519 2,"exp non-integer NumericDate",A,A,R,A,A,A,A,A
-E06,8725 3.10,"exp missing",-,R,R,R,A,A(n/c),A,A(n/c)
+E06,policy: exp required,"exp missing",-,R,R,R,A,A(n/c),A,A(n/c)
 E07,7519 4.1.4,"exp null",R,R,R,R,R,R,R,R
 E08,7519 4.1.4,"exp negative",R,R,R,R,R,R,R,R
 N01,7519 4.1.5,"nbf 2 h in the future",R,R,R,R,R,R,R,R
@@ -26,7 +26,7 @@ S02,8725 3.8,"iss missing",-,R,R,R,A,R,A,R
 S03,7519 2 StringOrURI,"iss with a trailing slash",-,R,R,R,A,R,A,R
 S04,7519 4.1.1,"iss as a number",-,R,R,R,R,R,R,R
 C01,7515 4.1.11,"crit lists an extension the verifier does not understand",R,R,R,A,R,R,R,R
-C02,7515 4.1.11,"crit is an empty list",R,R,R,A,A,A,A,A
+C02,7515 4.1.11 (recipient MAY),"crit is an empty list",R,R,R,A,A,A,A,A
 C03,7515 4.1.11,"crit is a string, not an array",R,R,R,R,R,R,R,R
 T01,8725 3.11,"typ of another JWT kind (secevent+jwt)",-,R,R,A(n/c),A,R,A,A(n/c)
 T02,7519 5.1,"typ missing",A,-,R,A,A,R,A,A

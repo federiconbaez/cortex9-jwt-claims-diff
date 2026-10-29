@@ -173,7 +173,7 @@ pub fn all(now: i64) -> Vec<Case> {
         ),
         c(
             "E06",
-            "8725 3.10",
+            "policy: exp required",
             "exp missing",
             H,
             &no_exp,
@@ -400,7 +400,7 @@ pub fn all(now: i64) -> Vec<Case> {
         ),
         c(
             "C02",
-            "7515 4.1.11",
+            "7515 4.1.11 (recipient MAY)",
             "crit is an empty list",
             r#"{"alg":"HS256","typ":"JWT","crit":[]}"#,
             &p,
