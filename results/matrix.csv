@@ -1,0 +1,44 @@
+case,rule,what,expected_default,expected_strict,jsonwebtoken_default,jsonwebtoken_strict,jwt-simple_default,jwt-simple_strict,josekit_default,josekit_strict
+V01,7519 4.1.3,"valid token, all claims (default mode has no audience identity)",-,A,R,A,A,A,A,A
+V02,7519,"valid, only exp (no iss/aud)",-,R,A,R,A,R,A,R
+E01,7519 4.1.4,"exp 2 h in the past",R,R,R,R,R,R,R,R
+E02,7519 4.1.4,"exp 10 min in the past (beyond a few minutes)",-,R,R,R,A,R,R,R(n/c)
+E03,7519 4.1.4,"exp 30 s in the past (inside 60 s leeway)",-,A,R,A,A,A,R,R(n/c)
+E04,7519 4.1.4,"exp as a JSON string",R,R,R,R,R,R,R,R
+E05,7519 2,"exp non-integer NumericDate",A,A,R,A,A,A,A,A
+E06,8725 3.10,"exp missing",-,R,R,R,A,A(n/c),A,A(n/c)
+E07,7519 4.1.4,"exp null",R,R,R,R,R,R,R,R
+E08,7519 4.1.4,"exp negative",R,R,R,R,R,R,R,R
+N01,7519 4.1.5,"nbf 2 h in the future",R,R,R,R,R,R,R,R
+N02,7519 4.1.5,"nbf 30 s in the future (inside leeway)",-,A,R,A,A,A,R,R(n/c)
+N03,7519 4.1.5,"nbf as a JSON string",R,R,R,R,R,R,R,R
+I01,7519 4.1.6,"iat 2 h in the future",-,-,R,A,R,R,R,R
+I02,7519 4.1.6,"iat as a JSON string",-,-,R,A,R,R,R,R
+A01,7519 4.1.3,"aud array containing the expected value",-,A,R,A,A,A,A,A
+A02,7519 4.1.3,"aud string, other value",-,R,R,R,A,R,A,R
+A03,7519 4.1.3,"aud array without the expected value",-,R,R,R,A,R,A,R
+A04,7519 4.1.3,"aud empty array",-,R,R,R,A,R,A,R
+A05,7519 4.1.3,"aud as a number",-,R,A,R,R,R,R,R
+A06,8725 3.9,"aud missing",-,R,A,R,A,R,A,A(n/c)
+A07,7519 2 StringOrURI,"aud differs only in case",-,R,R,R,A,R,A,R
+S01,7519 4.1.1,"iss other value",-,R,R,R,A,R,A,R
+S02,8725 3.8,"iss missing",-,R,R,R,A,R,A,R
+S03,7519 2 StringOrURI,"iss with a trailing slash",-,R,R,R,A,R,A,R
+S04,7519 4.1.1,"iss as a number",-,R,R,R,R,R,R,R
+C01,7515 4.1.11,"crit lists an extension the verifier does not understand",R,R,R,A,R,R,R,R
+C02,7515 4.1.11,"crit is an empty list",R,R,R,A,A,A,A,A
+C03,7515 4.1.11,"crit is a string, not an array",R,R,R,R,R,R,R,R
+T01,8725 3.11,"typ of another JWT kind (secevent+jwt)",-,R,R,A(n/c),A,R,A,A(n/c)
+T02,7519 5.1,"typ missing",A,-,R,A,A,R,A,A
+G01,8725 3.1,"alg none with empty signature",R,R,R,R,R,R,R,R
+G02,8725 3.1,"header alg HS384, HS256 signature",R,R,R,R,R,R,R,R
+G03,7518 3.1,"alg in lower case (hs256)",R,R,R,R,R,R,R,R
+G04,7515 4,"header is a JSON array",R,R,R,R,A,R,R,R
+G05,7519 7.2,"payload is a JSON array",R,R,R,R,R,R,R,R
+G06,7519 7.2,"payload with trailing garbage",R,R,R,R,R,R,R,R
+G07,7515 7.1,"four segments",R,R,R,R,R,R,R,R
+G08,7515 2,"signature with = padding",R,R,R,R,R,R,R,R
+G09,7515 2,"signature in the standard base64 alphabet",R,R,R,R,R,R,R,R
+D01,7519 4,"duplicate exp: first valid, last expired",R,R,R,R,R,R,R,R
+D02,7519 4,"duplicate iss: first expected, last other",-,R,R,R,R,R,A,R
+D03,7515 4,"duplicate alg in header: HS256 then none",R,R,R,R,R,R,R,R

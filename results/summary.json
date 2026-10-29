@@ -1,0 +1,122 @@
+{
+  "cases": 43,
+  "divergent_cases": 25,
+  "scores": {
+    "josekit/default": {
+      "scored": 22,
+      "match_rfc": 21,
+      "undue_accept": [
+        "C02"
+      ],
+      "spurious_reject": [],
+      "not_configurable": [],
+      "unscored_accepted": [
+        "V01",
+        "V02",
+        "E06",
+        "A01",
+        "A02",
+        "A03",
+        "A04",
+        "A06",
+        "A07",
+        "S01",
+        "S02",
+        "S03",
+        "T01",
+        "D02"
+      ]
+    },
+    "josekit/strict": {
+      "scored": 34,
+      "match_rfc": 33,
+      "undue_accept": [
+        "C02"
+      ],
+      "spurious_reject": [],
+      "not_configurable": [
+        "E02",
+        "E03",
+        "E06",
+        "N02",
+        "A06",
+        "T01"
+      ],
+      "unscored_accepted": [
+        "T02"
+      ]
+    },
+    "jsonwebtoken/default": {
+      "scored": 22,
+      "match_rfc": 20,
+      "undue_accept": [],
+      "spurious_reject": [
+        "E05",
+        "T02"
+      ],
+      "not_configurable": [],
+      "unscored_accepted": [
+        "V02",
+        "A05",
+        "A06"
+      ]
+    },
+    "jsonwebtoken/strict": {
+      "scored": 39,
+      "match_rfc": 37,
+      "undue_accept": [
+        "C01",
+        "C02"
+      ],
+      "spurious_reject": [],
+      "not_configurable": [
+        "T01"
+      ],
+      "unscored_accepted": [
+        "I01",
+        "I02",
+        "T02"
+      ]
+    },
+    "jwt-simple/default": {
+      "scored": 22,
+      "match_rfc": 20,
+      "undue_accept": [
+        "C02",
+        "G04"
+      ],
+      "spurious_reject": [],
+      "not_configurable": [],
+      "unscored_accepted": [
+        "V01",
+        "V02",
+        "E02",
+        "E03",
+        "E06",
+        "N02",
+        "A01",
+        "A02",
+        "A03",
+        "A04",
+        "A06",
+        "A07",
+        "S01",
+        "S02",
+        "S03",
+        "T01"
+      ]
+    },
+    "jwt-simple/strict": {
+      "scored": 39,
+      "match_rfc": 38,
+      "undue_accept": [
+        "C02"
+      ],
+      "spurious_reject": [],
+      "not_configurable": [
+        "E06"
+      ],
+      "unscored_accepted": []
+    }
+  }
+}
