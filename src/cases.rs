@@ -96,12 +96,12 @@ pub fn all(now: i64) -> Vec<Case> {
     vec![
         c(
             "V01",
-            "7519",
-            "valid token, all claims",
+            "7519 4.1.3",
+            "valid token, all claims (default mode has no audience identity)",
             H,
             &p,
             Url,
-            a,
+            o,
             a,
             None,
         ),
