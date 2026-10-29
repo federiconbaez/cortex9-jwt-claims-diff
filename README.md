@@ -54,6 +54,16 @@ Hallazgos:
 
 `cargo test`: 5/5. Ningún test se saltea.
 
+### Qué prueba y qué no "aceptado por todos / rechazado por todos" en los controles
+
+- **Prueba**: los envoltorios de los 3 crates, en los 2 modos, verifican la firma y aceptan un token válido. El control negativo (firma alterada) lo rechazan los 6, así que los veredictos de la matriz no se deben a un envoltorio que acepta todo.
+- **No prueba**:
+  - Que los crates rechacen otras alteraciones: hay un solo control negativo.
+  - Nada sobre confusión de algoritmos con claves asimétricas: solo HS256 y una clave.
+  - Nada sobre el compromiso de la clave: quien tiene el secreto HS256 firma tokens válidos.
+  - Nada sobre el replay de un token válido: `jti` no se chequea.
+- **El corpus y los veredictos esperados son nuestros**: 43 casos, con nuestra lectura de los RFC.
+
 ### Nivel de verificación
 
 **B**: el mecanismo está medido, es determinista entre dos corridas y tiene controles positivo y negativo. No es B+ porque no hay línea base que superar, y no es C porque no se probó contra servicios reales.
@@ -84,6 +94,16 @@ Hallazgos:
 Pre-registered; re-run in a clean clone with an identical matrix; CI re-runs it and fails on any verdict change. 43 cases, 25 divergent. Scores are in the table above.
 
 Findings: **jsonwebtoken ignores `crit`** (accepts an unknown critical extension in strict mode; RFC 7515 4.1.11 makes that JWS invalid). **jwt-simple accepts a header that is a JSON array** in default mode. All three accept `crit: []`, which RFC 7515 only forbids to producers (recipients MAY reject), so our expected verdict there was stricter than the RFC. jsonwebtoken's default mode rejects any token carrying `aud` when no audience is configured, which explains its two spurious rejections and confounds the default-mode `nbf` hypothesis. jwt-simple tolerates a 10-minute-old `exp` by default (15-minute tolerance). josekit has no leeway, no `typ` check and cannot require `exp` or `aud`.
+
+### What "accepted by all / rejected by all" in the controls proves and what it doesn't
+
+- **It proves** that the wrappers of the 3 crates in both modes verify the signature and accept a valid token, and that all 6 reject an altered signature, so the matrix verdicts do not come from an accept-all wrapper.
+- **It doesn't cover**:
+  - other alterations (there is a single negative control);
+  - algorithm confusion with asymmetric keys (HS256 and one key only);
+  - key compromise;
+  - replay of a valid token (`jti` not checked).
+- **The 43 cases and their expected verdicts are ours.**
 
 ### Verification level
 
